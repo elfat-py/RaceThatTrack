@@ -2,6 +2,34 @@ namespace RaceThatTrack;
 
 public class RaceTrack
 {
+    private static readonly Dictionary<string, (int, int)> RaceTrackCharacteristics = new Dictionary<string, (int, int)>
+    {   //The key is the name of the lab, first value is the length of the lab in meters, the second value is the chances of getting crashed.
+        {"MonacoGrandPrixCircuit",(600, 39)},
+        {"NrburgringNordschleife",(1200,32)},
+        {"SilverstoneCircuit",(1600, 6)},
+        {"SuzukiInternationalRacingCourse",(900, 32)},
+        {"MountPanoramaCircuit", (700, 65)}
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public RaceTrack()
     {
         
@@ -60,4 +88,5 @@ public class RaceTrack
          */
         int distancePerLap = 400;
     }
+    
 }
