@@ -4,17 +4,15 @@ namespace RaceThatTrack;
 public class RemoteControlCar
 {
     public string UserCarPreference;
-    public RemoteControlCar (string userCarPreference)
-    {
-        this.UserCarPreference = userCarPreference;
-    }
+    
     
     //A method that will check if the car may have crashed
     public bool CrashOrNot(int carSpeed, double terrainCrashingChances)
     {
         //Here if the speed is lower than 140 the crashing chances will be 5% and for every 20 km/h added the chances will add 
         //The terrain got it's own crashing chances which we will add to the total
-        double riskFromCarSpeed;
+        bool crashOrNot;
+        int randomNumber;
         //float totalRisk = (float)(carSpeed + terrainCrashingChances);
         double baseRisk = 0.05; // Base risk for speeds up to 140 km/h  = 5%
         const double speedIncreaseThreshold = 20; // Increase risk for every 20 km/h above the threshold
@@ -32,12 +30,38 @@ public class RemoteControlCar
             // Add the additional risk to the base risk
             baseRisk = 0.05 + additionalRisk + terrainCrashingChances;
         }
-        //Here we call the function that will generate teh random probability
+        
+        //Here we call the function that will generate the random probability
+        randomNumber = RandomChances();
+        crashOrNot = CheckSurvivalChances(randomNumber, baseRisk);
+        return crashOrNot;
+
+    }
+    //Check if the rider crashes or not
+    public bool CheckSurvivalChances(int randomNumber, double baseRisk)
+    {
+        bool survived = true;
+        if (baseRisk<=randomNumber)
+        {
+            survived = true;
+        }
+        else if (baseRisk >= randomNumber)
+        {
+            survived = false;
+        }
+
+        return survived;
 
     }
     
-    //Create some function that will run some probability that the car crashes or not
-
+    //This function will generate us a number from 1- 100
+    public int RandomChances()
+    {
+        Random random = new Random();
+        int randomNumber = random.Next(1, 101);
+        return randomNumber;
+    }
+    
     //This method check which of the cars is winning the race
     public string CheckFirstPlace(int playerOneCarDistance, int playerTwoCarDistance)
     {
@@ -80,6 +104,7 @@ public class RemoteControlCar
     {
         double ceofficent = 1; // I think this will be the default coefficent & it will increase if the players want to increase the speed
         double perFiveSec = 5;
+        
         rateOfDischarge = ceofficent / perFiveSec;
         batteryPercentage -= rateOfDischarge;
         return batteryPercentage;

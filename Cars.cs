@@ -5,7 +5,7 @@ public class Cars
     //We have created a dictionary that is going to return us different attributes of the car depending on it's name.
     private static readonly Dictionary<string, (int, int, int)> CarCharacteristics = new Dictionary<string, (int, int, int)>
     {
-        { "tesla", (120, 200, 99) },
+        { "tesla", (120, 200, 99) }, //The first value of the car is the AVG speed with which the car starts racing (the coeficent of discharge will be 1), second value is the max speed, third is battery capacity
         { "ferrari", (140, 280, 60) },
         { "mercedesamg", (135, 250, 70) },
         { "porsche", (120, 220, 140) },
