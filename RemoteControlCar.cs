@@ -3,7 +3,7 @@ namespace RaceThatTrack;
 
 public class RemoteControlCar
 {
-    public string UserCarPreference;
+    //After the users choose the cars a constructer here will attach values to each of the cars
     
     
     //A method that will check if the car may have crashed

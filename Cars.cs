@@ -9,7 +9,8 @@ public class Cars
         { "ferrari", (140, 280, 60) },
         { "mercedesamg", (135, 250, 70) },
         { "porsche", (120, 220, 140) },
-        { "lamborghini", (110, 260, 80) }
+        { "lamborghini", (110, 260, 80) },
+        {"mcclaren", (150, 300, 83)}
     };
     
     //Here we are getting the name of the car
@@ -31,10 +32,7 @@ public class Cars
         }
     }
     
-    public void PresentCar()
-    {
-        Console.WriteLine($"Car name: {char.ToUpper(this.CarName[0]) + this.CarName.Substring(1)} \n - Speed: {this.CarFeatures.Item1}, \n Max Speed: {this.CarFeatures.Item2}, \n Battery: {this.CarFeatures.Item3}");
-    }
+    
 
     
     public void PrintNissanGtR()

@@ -4,11 +4,11 @@ public class RaceTrack
 {
     private static readonly Dictionary<string, (int, int)> RaceTrackCharacteristics = new Dictionary<string, (int, int)>
     {   //The key is the name of the lab, first value is the length of the lab in meters, the second value is the chances of getting crashed.
-        {"MonacoGrandPrixCircuit",(600, 39)},
-        {"NrburgringNordschleife",(1200,32)},
+        {"MonacoGrandPrixCircuit",(600, 10)},
+        {"NrburgringNordschleife",(1200,12)},
         {"SilverstoneCircuit",(1600, 6)},
-        {"SuzukiInternationalRacingCourse",(900, 32)},
-        {"MountPanoramaCircuit", (700, 65)}
+        {"SuzukiInternationalRacingCourse",(900, 18)},
+        {"MountPanoramaCircuit", (700, 21)}
     };
     
     
