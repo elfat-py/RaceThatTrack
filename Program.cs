@@ -15,8 +15,8 @@ public class Program
         //The car.Drive() method should be implemented here (For each time we drive the car we should check if the car )
         
         //The method that checks if the car can finish the race should be here
-        Interface intf = new Interface();
-        intf.getCarName();
+        Interface intrface = new Interface();
+        intrface.ProgramInterface();
 
     }
 }

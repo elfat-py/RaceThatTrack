@@ -100,15 +100,32 @@ public class RemoteControlCar
     
     //RECHECK We should create a formula that will provide us for let's say 5 sec of race the rate of discharge should be 1 (coeficent)
     // so the rate of discharge will be 0.2 percent per second.  Formula: rateOfDischarge = Coeficent / perFiveSeconds
-    public double UpdateAndCheckBatteryLevel(double batteryPercentage, double rateOfDischarge)
+    public double UpdateAndCheckBatteryLevel(double batteryPercentage, double coeficent, bool speedRisen)//The coeficent will be 1 by default & will change depending on 
     {
-        double ceofficent = 1; // I think this will be the default coefficent & it will increase if the players want to increase the speed
+        double addedValueToCoefficent; //This value will increase with the rise of speed
+        double ceofficent = 1; // I think this will be the default coefficent & it will increase if the players want to increase the speed (meaby 0.2 with 10 km/h added in speedometer)
         double perFiveSec = 5;
-        
-        rateOfDischarge = ceofficent / perFiveSec;
-        batteryPercentage -= rateOfDischarge;
+        double rateOfDischarge;
+        if (speedRisen == true)
+        {
+            addedValueToCoefficent = SpeedRisen();
+            rateOfDischarge = (ceofficent+addedValueToCoefficent) / perFiveSec;
+            batteryPercentage -= rateOfDischarge; //Battery percentage will be the total value of the car's battery 
+            
+        }
+        else
+        {
+            rateOfDischarge = ceofficent / perFiveSec;
+            batteryPercentage -= rateOfDischarge; //Battery percentage will be the total value of the car's battery 
+            
+        }
         return batteryPercentage;
     }
 
-    
+    public double SpeedRisen()
+    {
+        double coeficent = 0.2;
+        coeficent += coeficent;
+        return coeficent;
+    }
 }
