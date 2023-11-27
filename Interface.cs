@@ -6,7 +6,7 @@ public class Interface
 
     public void ProgramInterface()
     {
-        
+        bool isGameRunning = true;
         
         //PlayerTwo();
         //Cars presentCarTest = new Cars("tesla");
@@ -20,13 +20,38 @@ public class Interface
         //Every two seconds we should implement some print that will print the road & the cars
         //Formula: Speed = Distance / Time
 
+        //Cars car = new Cars();
+        //car.PrintMercedes();
+
+        while (isGameRunning == true)
+        {
+            int userChoice = DisplayStart();
+            if (userChoice==1)
+            {
+                (string firstPlName, string secPlName) = ChoiceOne();
+            }else if (userChoice==2)
+            {
+                ChoiceTwo();
+            }
+            else if (userChoice==3)
+            {
+                ChoiceThree();
+            }else if (userChoice==0)
+            {
+                isGameRunning = false;
+            }else
+            {
+                Console.WriteLine("Unknown input(0 for quitting :( )");
+                ProgramInterface();
+            }
+        }
     }
     /*
      1.PLay
       Player One name:
        Player Two name:
        
-      -The name of the players will be saved at records as a dictionary or cvs file or what ever
+      -The name of the players will be saved at records as a dictionary or cvs file or what ever(Take care of this one later)
       
       -(From here will be player X choose Y:)
        Choose car
@@ -54,7 +79,7 @@ public class Interface
         1.Best players records(will display the top three players records)
         2.Overall records (All the players records will be displayed here)
         
-     3.Help (On proccess)
+     3.Help (On progress)
         1* Check our showroom            (DONE)
             1.tesla 
             2.ferrari
@@ -72,11 +97,27 @@ public class Interface
             2.Track information
             3.Car's information
      */
+    public int DisplayStart()
+    {
+        int userChoice;
+        Console.WriteLine("Welcome to the Console Car Race!");
+        Console.WriteLine("1. Play");
+        Console.WriteLine("2. Records");
+        Console.WriteLine("3. Help");
+        
+        return userChoice = Convert.ToInt32(Console.ReadLine());
+    }
     
     //Should continue the game by the option choosed
-    public void ChoiceOne()
+    public (string, string) ChoiceOne()
     {
+        Console.WriteLine("First player enter the name: ");
+        string firstPlayerName = Console.ReadLine();
         
+        Console.WriteLine("Second player enter the name: ");
+        string secondPlayerName = Console.ReadLine();
+        
+        return (firstPlayerName, secondPlayerName); 
     }
     
     public void ChoiceTwo()
@@ -84,22 +125,125 @@ public class Interface
         
     }
 
-    public void ChoiceThree(int userChoice)
+    public void ChoiceThree()
     {
+        
+        
         Console.WriteLine("Check our show room"); //Here there should be something displayed for 4-5 sec 
+        Console.WriteLine("1.Check the tracks \n 2.Check the cars \n 3.Check game mechanics\n 0. Quit\n  -1. Back");
+        int userChoice = Convert.ToInt32(Console.ReadLine());
+
+        switch (userChoice)
+        {
+            case 1:
+                CheckTracks();
+                break;
+            case 2:
+                CheckCars();
+                break;
+            case 3:
+                CheckGameMech();
+                break;
+            case -1:
+                ProgramInterface();
+                break;
+            case 0:
+                ProgramInterface();//Here we should give the value of Program Interface to quit.
+                break;
+            default:
+                Console.WriteLine("Unknown input(0 for quitting, -1 to go back :( )");
+                ChoiceThree();
+                break;
+        }
+    }
+
+    public void CheckTracks()
+    {
+        RaceTrack track = new RaceTrack();
+        
+        Console.WriteLine("1.MonacoGrandPrixCircuit \n 2.Nrburgring Nordschleife\n 3.SilverstoneCircuit\n 4.Suzuki International Racing Course\n 5.MountPanoramaCircuit");
+        int userChoice = Convert.ToInt32(Console.ReadLine());
+
+        /*switch (userChoice)
+        {
+            case 1:
+                PrintTesla();
+                break;
+            case 2:
+                car.PrintLaFerrari();
+                break;
+            case 3:
+                car.PrintMercedes();
+                break;
+            case 4:
+                car.PrintPorsche();
+                break;
+            case 5:
+                car.PrintNissanGtR();
+                break;
+            case -1:
+                ProgramInterface();
+                break;
+            case 0:
+                ProgramInterface();//Here we should give the value of Program Interface to quit.
+                break;
+            default:
+                Console.WriteLine("Unknown input(0 for quitting, -1 to go back :( )");
+                ChoiceThree();
+                break;
+        }*/
+        
+    }
+
+    public void CheckCars()
+    {
+        Cars car = new Cars();
         Console.WriteLine("1.Tesla \n            2.La - Ferrari\n            3.MercedesAMG\n            4.Porsche\n            5.McLaren");
+        //int userChoice = Convert.ToInt32(Console.ReadLine());
+        car.PrintMercedes();
         // switch (userChoice)
         // {
         //     case 1:
-        //         
-        //     
-        // }g
+        //         Console.Clear();
+        //         car.PrintTesla();
+        //         Thread.Sleep(12000);
+        //
+        //         break;
+        //     case 2:
+        //         Console.Clear();
+        //         car.PrintLaFerrari();
+        //         break;
+        //     case 3:
+        //         Console.Clear();
+        //         car.PrintMercedes();
+        //         Thread.Sleep(12000);
+        //         break;
+        //     case 4:
+        //         car.PrintPorsche();
+        //         break;
+        //     case 5:
+        //         car.PrintNissanGtR();
+        //         break;
+        //     case -1:
+        //         ProgramInterface();
+        //         break;
+        //     case 0:
+        //         ProgramInterface();//Here we should give the value of Program Interface to quit.
+        //         break;
+        //     default:
+        //         Console.WriteLine("Unknown input(0 for quitting, -1 to go back :( )");
+        //         ChoiceThree();
+        //         break;
+        // }
+    }
+
+    public void CheckGameMech()
+    {
         
     }
     
-    
 
-    public void DisplayStart()
+    /*public void DisplayStart()
     {
         Console.WriteLine("Welcome to the Console Car Race!");
         Console.WriteLine("Get ready for an exciting race between two cars.");
@@ -111,6 +255,7 @@ public class Interface
         Console.ReadLine();
 
     }
+    */
    
 
     public void PlayerOne()
