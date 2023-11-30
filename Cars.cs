@@ -10,7 +10,8 @@ public class Cars
         { "mercedesamg", (135, 250, 70) },
         { "porsche", (120, 220, 140) },
         { "lamborghini", (110, 260, 80) },
-        {"mcclaren", (150, 300, 83)}
+        {"mcclaren", (150, 300, 83)},
+        {"nissangtr", (123, 260, 77)}
     };
     
     //Here we are getting the name of the car
